@@ -263,8 +263,6 @@ class DetThread(QThread):
                                 c = int(cls)  # integer class
                                 label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                                 polygon_plot_one_box(torch.tensor(xyxyxyxy).cpu().numpy(), im0, label=label, color=colors(c, True), line_thickness=line_thickness)
-                if self.rate_check:
-                    time.sleep(1 / self.rate)
 
                 self.send_img.emit(im0)
                 self.send_raw.emit(im0s if isinstance(im0s, np.ndarray) else im0s[0])
